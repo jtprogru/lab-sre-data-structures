@@ -1,0 +1,28 @@
+{
+  "measured_at": "2026-11-07T14:19:14.837698+00:00",
+  "host": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "result": {
+    "keys": 200000,
+    "points_per_node": 160,
+    "note": "Кольцо с виртуальными узлами, не побайтовая реализация ketama.",
+    "rows": [
+      {
+        "from": 4,
+        "to": 5,
+        "mod_moved": 0.800785,
+        "ring_moved": 0.184815,
+        "mod_expected": 0.8,
+        "ring_expected": 0.2
+      },
+      {
+        "from": 10,
+        "to": 11,
+        "mod_moved": 0.90912,
+        "ring_moved": 0.09211,
+        "mod_expected": 0.9090909090909091,
+        "ring_expected": 0.09090909090909091
+      }
+    ]
+  }
+}

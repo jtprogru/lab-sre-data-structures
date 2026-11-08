@@ -1,0 +1,13 @@
+{
+  "measured_at": "2026-11-07T14:17:58.994996+00:00",
+  "host": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "result": {
+    "uname": "Linux f7e780ff7066 6.10.14-linuxkit #1 SMP Tue Oct 14 07:32:13 UTC 2025 aarch64 GNU/Linux",
+    "memory": "MemTotal:        8024600 kB",
+    "conntrack": "count=0\nmax=262144\nbuckets=262144\n"
+  },
+  "image": [
+    "redis@sha256:1f88291b4c57bdf249f02eb085a8669889b2d2954e91d4de5118a5da6b78dd53"
+  ]
+}

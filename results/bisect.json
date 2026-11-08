@@ -1,0 +1,11 @@
+{
+  "measured_at": "2026-11-07T14:19:15.051260+00:00",
+  "host": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "result": {
+    "commits": 1024,
+    "first_bad": "commit 700",
+    "checks": 10,
+    "output": "running 'sh' './check.sh'\nБинарный поиск: 255 редакций осталось проверить после этой (примерно 8 шагов)\n[20fbd5a7905ca7363bc0426ff262971c9ed86a8f] commit 768\nrunning 'sh' './check.sh'\nБинарный поиск: 127 редакций осталось проверить после этой (примерно 7 шагов)\n[4c0d527b576b557e6ce92f29608a2b4b44646cbf] commit 640\nrunning 'sh' './check.sh'\nБинарный поиск: 63 редакции осталось проверить после этой (примерно 6 шагов)\n[a38fa81dddeed1544b6e6dedc335d55e56fc99fa] commit 704\nrunning 'sh' './check.sh'\nБинарный поиск: 31 редакцию осталось проверить после этой (примерно 5 шагов)\n[e2235d17eb060cc527db5a3d4c8367573675d499] commit 672\nrunning 'sh' './check.sh'\nБинарный поиск: 15 редакций осталось проверить после этой (примерно 4 шага)\n[89657526036f0245770d6d9eb553e82086c37442] commit 688\nrunning 'sh' './check.sh'\nБинарный поиск: 7 редакций осталось проверить после этой (примерно 3 шага)\n[4b4f3875af800984c77b9d68a97682351eb7bac7] commit 696\nrunning 'sh' './check.sh'\nБинарный поиск: 3 редакции осталось проверить после этой (примерно 2 шага)\n[4297fe9dfac1105bba6167ae59c946999beb388f] commit 700\nrunning 'sh' './check.sh'\nБинарный поиск: 1 редакцию осталось проверить после этой (примерно 1 шаг)\n[4aba296790529dbee69e52132d025fe5982a89e1] commit 698\nrunning 'sh' './check.sh'\nБинарный поиск: 0 редакций осталось проверить после этой (примерно 0 шагов)\n[57e73dfeee441a476048a46ec7862c75eba1390d] commit 699\nrunning 'sh' './check.sh'\n4297fe9dfac1105bba6167ae59c946999beb388f is the first 'bad' commit\ncommit 4297fe9dfac1105bba6167ae59c946999beb388f\nAuthor: Lab <lab@example.invalid>\nDate:   2023-11-14T22:13:20Z\n\n    commit 700\n\n version | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\nbisect found first 'bad' commit\n"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "measured_at": "2026-11-07T14:16:51.359407+00:00",
+  "host": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "result": {
+    "info": "# Server\r\nredis_version:8.10.3\r\nredis_git_sha1:00000000\r\nredis_git_dirty:1\r\nredis_build_id:418e78fb81cd4847\r\nredis_mode:standalone\r\nos:Linux 6.10.14-linuxkit aarch64\r\narch_bits:64\r\nmonotonic_clock:ARM CNTVCT @ 24 ticks/us\r\nmultiplexing_api:epoll\r\natomicvar_api:c11-builtin\r\ngcc_version:14.2.0\r\nprocess_id:1\r\nprocess_supervised:no\r\nrun_id:91f663c03dde5300d8a3e5081d56149c2a29d3e8\r\ntcp_port:6379\r\nserver_time_usec:1794061029975777\r\nuptime_in_seconds:1\r\nuptime_in_days:0\r\nhz:10\r\nconfigured_hz:10\r\nlru_clock:15676133\r\nexecutable:/data/redis-server\r\nconfig_file:\r\nio_threads_active:0\r\nlistener0:name=tcp,bind=*,bind=-::*,port=6379",
+    "pipe_output": "All data transferred. Waiting for the last reply...\nLast reply received from server.\nerrors: 0, replies: 2000\n",
+    "count_hll": 999674,
+    "count_exact": 1000000,
+    "bytes_hll": 14358,
+    "bytes_set": 37277578,
+    "policy": "maxmemory-policy\nnoeviction",
+    "samples": "maxmemory-samples\n5"
+  },
+  "image": [
+    "redis@sha256:1f88291b4c57bdf249f02eb085a8669889b2d2954e91d4de5118a5da6b78dd53"
+  ]
+}
