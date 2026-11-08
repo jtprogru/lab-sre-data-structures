@@ -102,26 +102,36 @@ def hashing():
     }
 
 
-def bisect_lab():
-    with tempfile.TemporaryDirectory(prefix="sre-bisect-") as tmp:
-        run("git", "init", "-q", tmp)
-        chunks = []
-        for i in range(1, 1025):
-            message = f"commit {i}\n".encode()
-            content = f"{i}\n".encode()
-            chunks.append(
-                f"commit refs/heads/main\nmark :{i}\nauthor Lab <lab@example.invalid> 1700000000 +0000\ncommitter Lab <lab@example.invalid> 1700000000 +0000\ndata {len(message)}\n".encode()
-                + message
-                + f"M 100644 inline version\ndata {len(content)}\n".encode()
-                + content
-                + b"\n"
-            )
-        run("git", "-C", tmp, "fast-import", "--quiet", data=b"".join(chunks))
-        run("git", "-C", tmp, "checkout", "-q", "main")
-        check = Path(tmp) / "check.sh"
-        check.write_text(
-            '#!/bin/sh\necho checked >> checks.log\ntest "$(cat version)" -lt 700\n'
+def create_bisect_repo(path):
+    """Создать новую учебную историю и check.sh, не запускать bisect."""
+    # Существующий путь не трогаем, даже если это пустой каталог.
+    path = Path(path).resolve()
+    path.mkdir(parents=True, exist_ok=False)
+    tmp = str(path)
+    run("git", "init", "-q", tmp)
+    chunks = []
+    for i in range(1, 1025):
+        message = f"commit {i}\n".encode()
+        content = f"{i}\n".encode()
+        chunks.append(
+            f"commit refs/heads/main\nmark :{i}\nauthor Lab <lab@example.invalid> 1700000000 +0000\ncommitter Lab <lab@example.invalid> 1700000000 +0000\ndata {len(message)}\n".encode()
+            + message
+            + f"M 100644 inline version\ndata {len(content)}\n".encode()
+            + content
+            + b"\n"
         )
+    run("git", "-C", tmp, "fast-import", "--quiet", data=b"".join(chunks))
+    run("git", "-C", tmp, "checkout", "-q", "main")
+    check = Path(tmp) / "check.sh"
+    check.write_text(
+        '#!/bin/sh\necho checked >> checks.log\ntest "$(cat version)" -lt 700\n'
+    )
+    return path
+
+
+def bisect_lab():
+    with tempfile.TemporaryDirectory(prefix="sre-bisect-") as workspace:
+        tmp = str(create_bisect_repo(Path(workspace) / "repo"))
         run("git", "-C", tmp, "bisect", "start", "main", "main~1023")
         output = run("git", "-C", tmp, "bisect", "run", "sh", "./check.sh")
         first_bad = run(
@@ -356,7 +366,20 @@ def main():
     }
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=[*modes, "all", "local", "docker"])
+    parser.add_argument(
+        "--repo", type=Path,
+        help="С mode=bisect: только создать репозиторий по новому пути и сохранить его",
+    )
     args = parser.parse_args()
+    if args.repo is not None:
+        if args.mode != "bisect":
+            parser.error("--repo доступен только для bisect")
+        try:
+            path = create_bisect_repo(args.repo)
+        except FileExistsError:
+            parser.error(f"Путь уже существует: {args.repo}")
+        print(f"Created {path}: 1024 commits, first bad is commit 700")
+        return
     selected = (
         list(modes)
         if args.mode == "all"
